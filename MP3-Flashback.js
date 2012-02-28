@@ -8,7 +8,6 @@
  *
  *  Dependencies:
  *    jquery.js
- *    jquery-ui.js
  *    swfobject
  */
 
