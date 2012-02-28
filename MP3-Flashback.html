@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>MP3 Flashback</title>
+
+	<script src="http://www.google.com/jsapi"></script>
+	<script>
+		google.load('swfobject','2.2');
+		google.load('jquery','1.7.1');
+		google.load('jqueryui','1.8.16');
+	</script>
+
+	<!-- CSS include start -->
+
+	<link rel="stylesheet" type="text/css" href="MP3-Flashback.css">
+
+	<!-- CSS include end -->
+
+
+	<!-- Javascript insert start -->
+
+	<script src="MP3-Flashback.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('#container').MP3Flashback({
+			playerId : 'container',
+			embedId  : 'flash',
+			tracks   : {
+				file0 : 'demo.mp3'
+			}
+		});
+	});
+	</script>
+
+	<!-- Javascript insert end -->
+
+
+</head>
+<body>
+
+
+<!-- HTML example start -->
+
+<div id="container">
+	<div id="flash"></div>
+
+	<button class="play" type="button">Play</button>
+	<button class="pause" type="button">Pause</button>
+	<button class="stop" type="button">Stop</button>
+</div>
+
+<!-- HTML example end -->
+
+
+</body>
+</html>

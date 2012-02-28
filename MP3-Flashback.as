@@ -1,0 +1,122 @@
+﻿/*
+ *  MP3 Flashbock
+ *  An elegant MP3 Flash fallback when HTML5 audio is not supported
+ *
+ *  Copyright 2012, Marc S. Brooks (http://mbrooks.info)
+ *  Licensed under the MIT license:
+ *  http://www.opensource.org/licenses/mit-license.php
+ *
+ *  Dependencies:
+ *    Flash AS3
+ */
+
+import flash.events.Event;
+import flash.events.ProgressEvent;
+import flash.media.Sound;
+import flash.media.SoundChannel;
+
+// enable external callbacks
+ExternalInterface.addCallback('player', soundPlayer);
+
+// import flashVars
+var param:Object = LoaderInfo(this.root.loaderInfo).parameters;
+
+// register globals
+var isLoaded:Boolean  = false;
+var isPlaying:Boolean = false;
+var startTime:Number  = 0.00;
+var soundChannel:SoundChannel;
+var soundFile:Sound;
+
+/*
+ * Initialize sound object
+ */
+(function init() {
+	soundFile = new Sound();
+	soundFile.load(new URLRequest(param.file0));
+	soundFile.addEventListener(Event.COMPLETE, loadComplete);
+	soundFile.addEventListener(ProgressEvent.PROGRESS, loadSound);
+	soundFile.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
+})();
+
+/*
+ * Load sound file
+ */
+function loadSound(e:Event) {
+	if (soundFile && soundFile.length > 0) {
+		var percent:Number = Math.floor( (soundFile.bytesLoaded * 100) / soundFile.bytesTotal);
+		ExternalInterface.call('loadingSound', percent);
+		isLoaded = false;
+	}
+}
+
+function loadComplete(e:Event) {
+	if (soundFile && soundFile.length > 0) {
+		soundFile.removeEventListener(Event.COMPLETE, loadComplete);
+		ExternalInterface.call('loadingComplete');
+		isLoaded = true;
+	}
+}
+
+/*
+ * Play sound file
+ */
+function playProgress(e:Event) {
+	if (isLoaded) {
+		var minutes:uint	= Math.floor(soundChannel.position / 1000  / 60);
+		var seconds:uint	= Math.floor(soundChannel.position / 1000) % 60;
+		var loaded:Number   =  soundFile.bytesLoaded / soundFile.bytesTotal;
+		var percent:Number  = (soundChannel.position / soundFile.length * loaded);
+		var duration:String = minutes + ':' + seconds;
+		ExternalInterface.call('playingFile', duration, percent);
+		isPlaying = true;
+	}
+}
+
+function playComplete(e:Event) {
+	if (isPlaying) {
+		ExternalInterface.call('playingComplete');
+		isPlaying = false;
+	}
+}
+
+/*
+ * MP3 player controls
+ */
+function soundPlayer(action):void {
+	if (!isLoaded) { return }
+
+	switch(action) {
+		case 'play' :
+			if (isPlaying) { return }
+			isPlaying = true;
+			soundChannel = soundFile.play(startTime);
+			//addEventListener(Event.ENTER_FRAME, playProgress);
+		break;
+
+		case 'pause' :
+			if (!isPlaying) {
+				isPlaying = true;
+				soundChannel = soundFile.play(startTime);
+			}
+			else {
+				isPlaying = false;
+				startTime = soundChannel.position;
+				soundChannel.stop();
+			}
+		break;
+
+		case 'stop' :
+			if (!isPlaying) { return }
+			isPlaying = false;
+			soundChannel.stop();
+		break;
+	}
+}
+
+/*
+ * Other functions
+ */
+function onIOError(Event:IOErrorEvent) {
+	trace('Failed to load MP3 file: ' + Event.text);
+}

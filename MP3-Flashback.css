@@ -1,0 +1,22 @@
+/*
+ *  MP3 Flashback
+ *  An elegant MP3 Flash fallback when HTML5 audio is not supported
+ *
+ *  Copyright 2012, Marc S. Brooks (http://mbrooks.info)
+ *  Licensed under the MIT license:
+ *  http://www.opensource.org/licenses/mit-license.php
+ *
+ *  Dependencies:
+ *    jquery.js
+ *    jquery-ui.js
+ *    swfobject
+ */
+
+body {
+	background-color: #FFFFFF;
+}
+
+#container button {
+	border: 1px solid #CCCCCC;
+	padding: 10px;
+}
