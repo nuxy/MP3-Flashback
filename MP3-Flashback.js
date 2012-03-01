@@ -82,3 +82,22 @@
 		}
 	};
 })(jQuery);
+
+/*
+ * Flash object callbacks
+ */
+function loadProgress() {
+	alert('loading progress');
+}
+
+function loadComplete() {
+	alert('loading complete');
+}
+
+function playProgress() {
+	alert('play progress');
+}
+
+function playComplete() {
+	alert('play complete');
+}

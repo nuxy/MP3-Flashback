@@ -35,17 +35,17 @@ var soundFile:Sound;
 	soundFile = new Sound();
 	soundFile.load(new URLRequest(param.file0));
 	soundFile.addEventListener(Event.COMPLETE, loadComplete);
-	soundFile.addEventListener(ProgressEvent.PROGRESS, loadSound);
+	soundFile.addEventListener(ProgressEvent.PROGRESS, loadProgress);
 	soundFile.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
 })();
 
 /*
- * Load sound file
+ * Callbacks when loading files; return progress as a percent
  */
-function loadSound(e:Event) {
+function loadProgress(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		var percent:Number = Math.floor( (soundFile.bytesLoaded * 100) / soundFile.bytesTotal);
-		ExternalInterface.call('loadingSound', percent);
+		ExternalInterface.call('loadProgress', percent);
 		isLoaded = false;
 	}
 }
@@ -53,13 +53,13 @@ function loadSound(e:Event) {
 function loadComplete(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		soundFile.removeEventListener(Event.COMPLETE, loadComplete);
-		ExternalInterface.call('loadingComplete');
+		ExternalInterface.call('loadComplete');
 		isLoaded = true;
 	}
 }
 
 /*
- * Play sound file
+ * Callbacks when playing MP3s; returns duration and percent as function arguments
  */
 function playProgress(e:Event) {
 	if (isLoaded) {
@@ -68,20 +68,20 @@ function playProgress(e:Event) {
 		var duration:String = minutes + ':' + seconds;
 		var loaded:Number   = soundFile.bytesLoaded  / soundFile.bytesTotal;
 		var percent:Number  = (soundChannel.position / soundFile.length * loaded);
-		ExternalInterface.call('playingFile', duration, percent);
+		ExternalInterface.call('playProgress', duration, percent);
 		isPlaying = true;
 	}
 }
 
 function playComplete(e:Event) {
 	if (isPlaying) {
-		ExternalInterface.call('playingComplete');
+		ExternalInterface.call('playComplete');
 		isPlaying = false;
 	}
 }
 
 /*
- * MP3 player controls
+ * MP3 player controls: Play, Pause, and Stop
  */
 function soundPlayer(action):void {
 	if (!isLoaded) { return }
