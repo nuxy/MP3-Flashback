@@ -8,14 +8,54 @@
  *
  *  Dependencies:
  *    jquery.js
- *    swfobject
+ *    jquery-ui.js
+ *    swfobject.js
  */
 
 body {
 	background-color: #FFFFFF;
 }
 
+#container {
+	border: 3px double #EEEEEE;
+	height: 70px;
+	margin: 25% auto 0px auto;
+	padding: 10px;
+	width: 175px;
+}
+
 #container button {
 	border: 1px solid #CCCCCC;
+	margin-right: 5px;
 	padding: 10px;
+	position: relative;
+	top: 10px;
+}
+
+#progressbar {
+	background-color: #E7E7E7;
+	border: 1px solid #BBBBBB;
+	height: 20px;
+	width: 175px;
+}
+
+#duration {
+	background-color: #F7F7F7;
+	border: 1px solid #EEEEEE;
+	float: right;
+	font-size: 14px;
+	height: 13px;
+	padding: 2px;
+	position: relative;
+	right: 2px;
+	text-align: right;
+	top: 10px;
+	width: 45px;
+}
+
+/* progress bar image */
+
+div.ui-progressbar-value {
+	background-image: url( images/progressbar.gif );
+	height: 20px;
 }

@@ -61,9 +61,9 @@
 					data.flash.player('play');
 				});
 
-				data.container.children('button.pause').click(function() {
-					data.flash.player('pause');
-				});
+				//data.container.children('button.pause').click(function() {
+				//	data.flash.player('pause');
+				//});
 
 				data.container.children('button.stop').click(function() {
 					data.flash.player('stop');
@@ -95,8 +95,10 @@
 
 	$.fn.playProgress = function(duration, percent) {
 		$('#progressbar').progressbar({
-			value : Math.round(percent * 100);
+			value : Math.round(percent * 100)
 		});
+
+		$('#duration').html(duration);
 	};
 
 	$.fn.playComplete = function() {

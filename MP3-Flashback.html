@@ -6,6 +6,7 @@
 	<script>
 		google.load('swfobject','2.2');
 		google.load('jquery','1.7.1');
+		google.load('jqueryui','1.8.16');
 	</script>
 
 	<!-- CSS include start -->
@@ -40,15 +41,19 @@
 <!-- HTML example start -->
 
 <div id="container">
-	<div id="flash"></div>
+	<div id="progressbar"></div>
 
-	<button class="play" type="button">Play</button>
-	<button class="pause" type="button">Pause</button>
+	<audio id="flash"></audio>
+
+	<button class="play pause" type="button">Play</button>
 	<button class="stop" type="button">Stop</button>
+
+	<div id="duration"></div>
 </div>
 
 <!-- HTML example end -->
 
+<div id="debug"></div>
 
 </body>
 </html>
