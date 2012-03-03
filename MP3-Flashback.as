@@ -45,7 +45,7 @@ var soundFile:Sound;
 function loadProgress(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		var percent:Number = Math.floor( (soundFile.bytesLoaded * 100) / soundFile.bytesTotal);
-		ExternalInterface.call('loadProgress', percent);
+		ExternalInterface.call('$.fn.loadProgress', percent);
 		isLoaded = false;
 	}
 }
@@ -53,7 +53,7 @@ function loadProgress(e:Event) {
 function loadComplete(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		soundFile.removeEventListener(Event.COMPLETE, loadComplete);
-		ExternalInterface.call('loadComplete');
+		ExternalInterface.call('$.fn.loadComplete');
 		isLoaded = true;
 	}
 }
@@ -68,14 +68,14 @@ function playProgress(e:Event) {
 		var duration:String = minutes + ':' + seconds;
 		var loaded:Number   = soundFile.bytesLoaded  / soundFile.bytesTotal;
 		var percent:Number  = (soundChannel.position / soundFile.length * loaded);
-		ExternalInterface.call('playProgress', duration, percent);
+		ExternalInterface.call('$.fn.playProgress', duration, percent);
 		isPlaying = true;
 	}
 }
 
 function playComplete(e:Event) {
 	if (isPlaying) {
-		ExternalInterface.call('playComplete');
+		ExternalInterface.call('$.fn.playComplete');
 		isPlaying = false;
 	}
 }
@@ -91,7 +91,7 @@ function soundPlayer(action):void {
 			if (isPlaying) { return }
 			isPlaying = true;
 			soundChannel = soundFile.play(startTime);
-			//addEventListener(Event.ENTER_FRAME, playProgress);
+			addEventListener(Event.ENTER_FRAME, playProgress);
 		break;
 
 		case 'pause' :
