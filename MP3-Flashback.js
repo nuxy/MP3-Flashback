@@ -8,7 +8,8 @@
  *
  *  Dependencies:
  *    jquery.js
- *    swfobject
+ *    jquery-ui.js
+ *    swfobject.js
  */
 
 (function($) {
@@ -53,6 +54,8 @@
 				var $this = $(this),
 					data  = $this.data();
 
+				var playing = null;
+
 				// enable mouse events
 				data.container.children('button.play').click(function() {
 					data.flash.player('play');
@@ -66,7 +69,7 @@
 					data.flash.player('stop');
 				});
 			});
-		},
+		}
 	};
 
 	$.fn.MP3Flashback = function(method) {
@@ -81,23 +84,22 @@
 			$.error('Method ' +  method + ' does not exist on jQuery.MP3Flashback');
 		}
 	};
+
+	$.fn.loadProgress = function(percent) {
+		return;
+	};
+
+	$.fn.loadComplete = function() {
+		return;
+	};
+
+	$.fn.playProgress = function(duration, percent) {
+		$('#progressbar').progressbar({
+			value : Math.round(percent * 100);
+		});
+	};
+
+	$.fn.playComplete = function() {
+		return;
+	};
 })(jQuery);
-
-/*
- * Flash object callbacks
- */
-function loadProgress() {
-	alert('loading progress');
-}
-
-function loadComplete() {
-	alert('loading complete');
-}
-
-function playProgress() {
-	alert('play progress');
-}
-
-function playComplete() {
-	alert('play complete');
-}
