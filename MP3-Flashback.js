@@ -19,7 +19,7 @@
 			// default options
 			var settings = $.extend({
 				playerId : 'player',
-				embedId  : 'embed',
+				objectId : 'object',
 				tracks   : null
 			}, options);
 
@@ -30,15 +30,22 @@
 				if ( $.isEmptyObject(data) ) {
 
 					// create Flash object
-					swfobject.embedSWF('MP3-Flashback.swf', settings.embedId,'1','1','9.0','', settings.tracks,'#FFFFFF');
+					swfobject.embedSWF('MP3-Flashback.swf', settings.objectId,'1','1','9.0','', settings.tracks,'#FFFFFF');
 
 					$(this).data({
 						container : $('#' + settings.playerId),
-						flash     : window.document[settings.embedId],
+						flash     : window.document[settings.objectId],
 						options   : settings
 					});
 
-					$(this).MP3Flashback('setup');
+					// enable mouse events
+					$(this).data.container.children('.play').click(function() {
+						$(this).data.flash.player('play');
+					});
+
+					$(this).data.container.children('.stop').click(function() {
+						$(this).data.flash.player('stop');
+					});
 				}
 			});
 		},
@@ -46,28 +53,6 @@
 		destroy : function() {
 			return this.each(function() {
 				$(this).removeData();
-			});
-		},
-
-		setup : function() {
-			return this.each(function() {
-				var $this = $(this),
-					data  = $this.data();
-
-				var playing = null;
-
-				// enable mouse events
-				data.container.children('button.play').click(function() {
-					data.flash.player('play');
-				});
-
-				//data.container.children('button.pause').click(function() {
-				//	data.flash.player('pause');
-				//});
-
-				data.container.children('button.stop').click(function() {
-					data.flash.player('stop');
-				});
 			});
 		}
 	};
@@ -98,7 +83,7 @@
 			value : Math.round(percent * 100)
 		});
 
-		$('#duration').html(duration);
+		$('#timer').html(duration);
 	};
 
 	$.fn.playComplete = function() {

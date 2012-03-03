@@ -16,7 +16,7 @@ body {
 	background-color: #FFFFFF;
 }
 
-#container {
+#mp3_flashback {
 	border: 3px double #EEEEEE;
 	height: 70px;
 	margin: 25% auto 0px auto;
@@ -24,7 +24,7 @@ body {
 	width: 175px;
 }
 
-#container button {
+#mp3_flashback button {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
 	margin-right: 5px;
@@ -34,14 +34,14 @@ body {
 	width: 50px;
 }
 
-#progressbar {
+#mp3_flashback div.progressbar {
 	background-color: #E7E7E7;
 	border: 1px solid #BBBBBB;
 	height: 20px;
 	width: 173px;
 }
 
-#duration {
+#mp3_flashback span.timer {
 	background-color: #F7F7F7;
 	border: 1px solid #EEEEEE;
 	float: right;
@@ -57,7 +57,7 @@ body {
 
 /* progress bar image */
 
-div.ui-progressbar-value {
+#mp3_flashback div.ui-progressbar-value {
 	background: url( images/progressbar.gif ) repeat;
 	height: 20px;
 }

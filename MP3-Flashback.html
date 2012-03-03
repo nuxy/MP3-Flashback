@@ -9,6 +9,7 @@
 		google.load('jqueryui','1.8.16');
 	</script>
 
+
 	<!-- CSS include start -->
 
 	<link rel="stylesheet" type="text/css" href="MP3-Flashback.css">
@@ -21,9 +22,9 @@
 	<script src="MP3-Flashback.js"></script>
 	<script>
 	$(document).ready(function() {
-		$('#container').MP3Flashback({
-			playerId : 'container',
-			embedId  : 'flash',
+		$('#player').MP3Flashback({
+			playerId : 'mp3_flashback',
+			objectId : 'audio_player',
 			tracks   : {
 				file0 : 'demo.mp3'
 			}
@@ -40,20 +41,19 @@
 
 <!-- HTML example start -->
 
-<div id="container">
-	<div id="progressbar"></div>
+<div id="mp3_flashback">
+	<div class="progressbar"></div>
 
-	<audio id="flash"></audio>
+	<audio id="audio_player"></audio>
 
-	<button class="play pause" type="button">Play</button>
+	<button class="play" type="button">Play</button>
 	<button class="stop" type="button">Stop</button>
 
-	<div id="duration"></div>
+	<div class="timer"></div>
 </div>
 
 <!-- HTML example end -->
 
-<div id="debug"></div>
 
 </body>
 </html>
