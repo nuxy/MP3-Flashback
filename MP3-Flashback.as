@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  MP3 Flashbock
  *  An elegant MP3 Flash fallback when HTML5 audio is not supported
  *
@@ -24,7 +24,7 @@ var param:Object = LoaderInfo(this.root.loaderInfo).parameters;
 // register globals
 var isLoaded:Boolean  = false;
 var isPlaying:Boolean = false;
-var startTime:Number  = 0.00;
+var startTime:Number  = 0.0;
 var soundChannel:SoundChannel;
 var soundFile:Sound;
 
@@ -96,19 +96,19 @@ function soundPlayer(action):void {
 
 		case 'pause' :
 			if (!isPlaying) {
-				isPlaying = true;
-				soundChannel = soundFile.play(startTime);
+				soundPlayer('play');
 			}
 			else {
 				isPlaying = false;
 				startTime = soundChannel.position;
-				soundChannel.stop();
+				soundPlayer('stop');
 			}
 		break;
 
 		case 'stop' :
 			if (!isPlaying) { return }
 			isPlaying = false;
+			startTime = 0.0;
 			soundChannel.stop();
 		break;
 	}
