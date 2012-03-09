@@ -19,7 +19,6 @@
 			// default options
 			var settings = $.extend({
 				playerId : 'player',
-				objectId : 'object',
 				tracks   : null
 			}, options);
 
@@ -30,22 +29,15 @@
 				if ( $.isEmptyObject(data) ) {
 
 					// create Flash object
-					swfobject.embedSWF('MP3-Flashback.swf', settings.objectId,'1','1','9.0','', settings.tracks,'#FFFFFF');
+					swfobject.embedSWF('MP3-Flashback.swf', settings.playerId,'1','1','9.0','', settings.tracks,'#FFFFFF');
 
 					$(this).data({
-						container : $('#' + settings.playerId),
-						flash     : window.document[settings.objectId],
+						container : $(this),
+						flash     : window.document[settings.playerId],
 						options   : settings
 					});
 
-					// enable mouse events
-					$(this).data.container.children('.play').click(function() {
-						$(this).data.flash.player('play');
-					});
-
-					$(this).data.container.children('.stop').click(function() {
-						$(this).data.flash.player('stop');
-					});
+					$(this).MP3Flashback('setup');
 				}
 			});
 		},
@@ -53,6 +45,36 @@
 		destroy : function() {
 			return this.each(function() {
 				$(this).removeData();
+			});
+		},
+
+		setup : function() {
+			return this.each(function() {
+				var $this = $(this),
+					data = $this.data();
+
+				var buttonPause = data.container.children('.sound_pause');
+				var buttonPlay  = data.container.children('.sound_play');
+				var buttonStop  = data.container.children('.sound_stop');
+
+				// enable mouse events; toggle play/pause button visibility
+				buttonPause.click(function() {
+					data.flash.player('pause');
+					$(this).hide(0);
+					buttonPlay.show(0);
+				});
+
+				buttonPlay.click(function() {
+					data.flash.player('play');
+					$(this).hide(0);
+					buttonPause.show(0);
+				});
+
+				buttonStop.click(function() {
+					data.flash.player('stop');
+					buttonPause.hide(0);
+					buttonPlay.show(0);
+				});
 			});
 		}
 	};
@@ -70,23 +92,23 @@
 		}
 	};
 
-	$.fn.loadProgress = function(percent) {
-		return;
-	};
-
 	$.fn.loadComplete = function() {
 		return;
 	};
 
-	$.fn.playProgress = function(duration, percent) {
-		$('#progressbar').progressbar({
-			value : Math.round(percent * 100)
-		});
-
-		$('#timer').html(duration);
+	$.fn.loadProgress = function(percent) {
+		return;
 	};
 
 	$.fn.playComplete = function() {
 		return;
+	};
+
+	$.fn.playProgress = function(duration, percent) {
+		$('.progress_bar').progressbar({
+			value : Math.round(percent * 100)
+		});
+
+		$('.progress_timer').html(duration);
 	};
 })(jQuery);

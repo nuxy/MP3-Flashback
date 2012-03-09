@@ -34,16 +34,21 @@ body {
 	width: 50px;
 }
 
-#mp3_flashback div.progressbar {
+#mp3_flashback button.sound_pause {
+	display: none;
+}
+
+#mp3_flashback div.progress_bar {
 	background-color: #E7E7E7;
 	border: 1px solid #BBBBBB;
 	height: 20px;
 	width: 173px;
 }
 
-#mp3_flashback span.timer {
+#mp3_flashback span.progress_timer {
 	background-color: #F7F7F7;
 	border: 1px solid #EEEEEE;
+	display: block;
 	float: right;
 	font-size: 12px;
 	height: 13px;

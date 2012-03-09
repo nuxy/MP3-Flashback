@@ -22,10 +22,9 @@
 	<script src="MP3-Flashback.js"></script>
 	<script>
 	$(document).ready(function() {
-		$('#player').MP3Flashback({
-			playerId : 'mp3_flashback',
-			objectId : 'audio_player',
-			tracks   : {
+		$('#mp3_flashback').MP3Flashback({
+			playerId  : 'audio_player',
+			tracks    : {
 				file0 : 'demo.mp3'
 			}
 		});
@@ -42,14 +41,15 @@
 <!-- HTML example start -->
 
 <div id="mp3_flashback">
-	<div class="progressbar"></div>
+	<div class="progress_bar"></div>
 
 	<audio id="audio_player"></audio>
 
-	<button class="play" type="button">Play</button>
-	<button class="stop" type="button">Stop</button>
+	<button class="sound_pause" type="button">Pause</button>
+	<button class="sound_play" type="button">Play</button>
+	<button class="sound_stop" type="button">Stop</button>
 
-	<div class="timer"></div>
+	<span class="progress_timer"></span>
 </div>
 
 <!-- HTML example end -->
