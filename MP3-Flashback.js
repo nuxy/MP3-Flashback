@@ -30,7 +30,7 @@
 					var soundFile = settings.tracks.file0;
 					var audioObj  = new Audio(soundFile);
 
-					// check support for HTML5 audio/ MPEG3
+					// check support for HTML5 audio/MPEG3
 					if (audioObj.canPlayType('audio/mp3') ) {
 						$(this).data({
 							container : $(this),
@@ -120,7 +120,7 @@
 					var audioObj = data.soundObj;
 					var minutes  = Math.floor(audioObj.currentTime / 60) % 60;
 					var seconds  = Math.floor(audioObj.currentTime % 60);
-					var duration = minutes + ':' + seconds;
+					var duration = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 					var percent  = Math.floor(audioObj.currentTime / audioObj.duration * 100);
 
 					$.fn.playProgress(duration, percent);
@@ -142,6 +142,9 @@
 		}
 	};
 
+	/*
+	 * HTML5 audio/Flash callback functions
+	 */
 	$.fn.loadComplete = function() {
 		return;
 	};

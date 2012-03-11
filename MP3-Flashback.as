@@ -44,7 +44,7 @@ var soundFile:Sound;
  */
 function loadProgress(e:Event) {
 	if (soundFile && soundFile.length > 0) {
-		var percent:Number = Math.floor(((soundFile.bytesLoaded * 100) / soundFile.bytesTotal) * 100));
+		var percent:Number = Math.floor((((soundFile.bytesLoaded * 100) / soundFile.bytesTotal) * 100));
 		ExternalInterface.call('$.fn.loadProgress', percent);
 		isLoaded = false;
 	}
@@ -65,7 +65,7 @@ function playProgress(e:Event) {
 	if (isLoaded) {
 		var minutes:uint    = Math.floor(soundChannel.position / 1000  / 60);
 		var seconds:uint    = Math.floor(soundChannel.position / 1000) % 60;
-		var duration:String = minutes + ':' + seconds;
+		var duration:String = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 		var loaded:Number   = soundFile.bytesLoaded  / soundFile.bytesTotal;
 		var percent:Number  = Math.floor(((soundChannel.position / soundFile.length * loaded) * 100));
 		ExternalInterface.call('$.fn.playProgress', duration, percent);
