@@ -28,7 +28,8 @@ body {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
 	cursor: pointer;
-	margin-right: 5px;
+	float: left;
+	margin-right: 10px;
 	padding: 10px;
 	position: relative;
 	top: 10px;
@@ -49,21 +50,22 @@ body {
 #mp3_flashback span.progress_timer {
 	background-color: #F7F7F7;
 	border: 1px solid #EEEEEE;
+	color: #787878;
 	display: block;
 	float: right;
-	font-size: 12px;
-	height: 13px;
+	font-size: 14px;
+	height: 14px;
 	padding: 2px 4px 2px 0px;
 	position: relative;
 	right: 2px;
 	text-align: right;
 	top: 10px;
-	width: 45px;
+	width: 47px;
 }
 
 /* progress bar image */
 
 #mp3_flashback div.ui-progressbar-value {
-	background: url( images/progressbar.gif ) repeat;
+	background: url( images/progress.gif ) repeat;
 	height: 20px;
 }
