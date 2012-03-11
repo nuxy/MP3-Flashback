@@ -116,12 +116,12 @@
 				});
 
 				// enable HTML5 audio events
-				$(data.soundObj).bind('timeupdate progress', function() {
+				$(data.soundObj).bind('timeupdate', function() {
 					var audioObj = data.soundObj;
-					var minutes  = parseInt(audioObj.currentTime / 60 % 60);
-					var seconds  = parseInt(audioObj.currentTime % 60);
+					var minutes  = Math.floor(audioObj.currentTime / 60) % 60;
+					var seconds  = Math.floor(audioObj.currentTime % 60);
 					var duration = minutes + ':' + seconds;
-					var percent  = (audioObj.currentTime / audioObj.duration * 100);
+					var percent  = Math.floor(audioObj.currentTime / audioObj.duration * 100);
 
 					$.fn.playProgress(duration, percent);
 				});
