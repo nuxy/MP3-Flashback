@@ -27,6 +27,7 @@ body {
 #mp3_flashback button {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
+	cursor: pointer;
 	margin-right: 5px;
 	padding: 10px;
 	position: relative;
