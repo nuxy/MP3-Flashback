@@ -16,7 +16,7 @@
 	var methods = {
 		init : function(options) {
 
-			// default options
+			// default option
 			var settings = $.extend({
 				playerId : 'player',
 				tracks   : null
@@ -27,17 +27,35 @@
 					data  = $this.data();
 
 				if ( $.isEmptyObject(data) ) {
+					var soundFile = settings.tracks.file0;
+					var audioObj  = new Audio(soundFile);
 
-					// create Flash object
-					swfobject.embedSWF('MP3-Flashback.swf', settings.playerId,'1','1','9.0','', settings.tracks,'#FFFFFF');
+					// check support for HTML5 audio/ MPEG3
+					if (audioObj.canPlayType('audio/mp3') ) {
+						$(this).data({
+							container : $(this),
+							soundObj  : audioObj,
+							options   : settings
+						});
 
-					$(this).data({
-						container : $(this),
-						flash     : window.document[settings.playerId],
-						options   : settings
-					});
+						$(this).MP3Flashback('setup');
+					}
 
-					$(this).MP3Flashback('setup');
+					// .. fallback to Flash
+					else {
+						swfobject.embedSWF('MP3-Flashback.swf', settings.playerId, '1','1','9.0','', settings.tracks, 'transparent','',
+							function() {
+								$this.data({
+									container : $this,
+									soundObj  : window.document[settings.playerId],
+									useFlash  : true,
+									options   : settings
+								});
+
+								$this.MP3Flashback('setup');
+							}
+						);
+					}
 				}
 			});
 		},
@@ -59,20 +77,40 @@
 
 				// enable mouse events; toggle play/pause button visibility
 				buttonPause.click(function() {
-					data.flash.player('pause');
+					if (data.useFlash) {
+						data.soundObj.player('pause');
+					}
+					else {
+						data.soundObj.play();
+					}
+
 					$(this).hide(0);
 					buttonPlay.show(0);
 				});
 
 				buttonPlay.click(function() {
-					data.flash.player('play');
+					if (data.useFlash) {
+						alert('flash');
+						data.soundObj.player('play');
+					}
+					else {
+						alert('html5');
+						data.soundObj.play();
+					}
+
 					$(this).hide(0);
 					buttonPause.show(0);
 				});
 
 				buttonStop.click(function() {
-					data.flash.player('stop');
-					buttonPause.hide(0);
+					if (data.useFlash) {
+						data.soundObj.player('stop');
+					}
+					else {
+						data.soundObj.stop();
+					}
+
+					$(this).hide(0);
 					buttonPlay.show(0);
 				});
 			});
