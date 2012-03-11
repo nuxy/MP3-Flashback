@@ -101,7 +101,8 @@ function soundPlayer(action):void {
 			else {
 				isPlaying = false;
 				startTime = soundChannel.position;
-				soundPlayer('stop');
+				soundChannel.stop();
+				removeEventListener(Event.ENTER_FRAME, playProgress);
 			}
 		break;
 
@@ -110,6 +111,7 @@ function soundPlayer(action):void {
 			isPlaying = false;
 			startTime = 0.0;
 			soundChannel.stop();
+			removeEventListener(Event.ENTER_FRAME, playProgress);
 		break;
 	}
 }
