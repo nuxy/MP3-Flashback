@@ -77,6 +77,8 @@
 
 				// enable mouse events; toggle play/pause button visibility
 				buttonPause.click(function() {
+					$(this).hide(0);
+
 					if (data.useFlash) {
 						data.soundObj.player('pause');
 					}
@@ -84,21 +86,19 @@
 						data.soundObj.play();
 					}
 
-					$(this).hide(0);
 					buttonPlay.show(0);
 				});
 
 				buttonPlay.click(function() {
+					$(this).hide(0);
+
 					if (data.useFlash) {
-						alert('flash');
 						data.soundObj.player('play');
 					}
 					else {
-						alert('html5');
 						data.soundObj.play();
 					}
 
-					$(this).hide(0);
 					buttonPause.show(0);
 				});
 
@@ -107,10 +107,11 @@
 						data.soundObj.player('stop');
 					}
 					else {
-						data.soundObj.stop();
+						data.soundObj.pause();
+						data.soundObj.currentTime = 0;
 					}
 
-					$(this).hide(0);
+					buttonPause.hide(0);
 					buttonPlay.show(0);
 				});
 			});
