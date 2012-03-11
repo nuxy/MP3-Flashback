@@ -114,6 +114,17 @@
 					buttonPause.hide(0);
 					buttonPlay.show(0);
 				});
+
+				// enable HTML5 audio events
+				$(data.soundObj).bind('timeupdate progress', function() {
+					var audioObj = data.soundObj;
+					var minutes  = parseInt(audioObj.currentTime / 60 % 60);
+					var seconds  = parseInt(audioObj.currentTime % 60);
+					var duration = minutes + ':' + seconds;
+					var percent  = (audioObj.currentTime / audioObj.duration * 100);
+
+					$.fn.playProgress(duration, percent);
+				});
 			});
 		}
 	};
@@ -145,7 +156,7 @@
 
 	$.fn.playProgress = function(duration, percent) {
 		$('.progress_bar').progressbar({
-			value : Math.round(percent * 100)
+			value : percent
 		});
 
 		$('.progress_timer').html(duration);
