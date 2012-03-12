@@ -2,6 +2,11 @@
 
 This project is currently in development with no set time of release.
 
+== TODO
+
+- Volume controls
+- Playlist support
+
 == Author
 
 {Marc S. Brooks}[https://github.com/nuxy]
