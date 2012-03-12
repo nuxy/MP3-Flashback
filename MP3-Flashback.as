@@ -112,6 +112,7 @@ function soundPlayer(action):void {
 			startTime = 0.0;
 			soundChannel.stop();
 			removeEventListener(Event.ENTER_FRAME, playProgress);
+			ExternalInterface.call('$.fn.playComplete');
 		break;
 	}
 }

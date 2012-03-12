@@ -27,11 +27,16 @@
 					data  = $this.data();
 
 				if ( $.isEmptyObject(data) ) {
-					var soundFile = settings.tracks.file0;
-					var audioObj  = new Audio(soundFile);
+					var soundFile = settings.tracks.file0;	// TODO: multiple file playlist
+					var audioObj = null;
+
+					try {
+						audioObj = new Audio(soundFile);
+					}
+					catch(err) {}
 
 					// check support for HTML5 audio/MPEG3
-					if (audioObj.canPlayType('audio/mp3') ) {
+					if (audioObj && audioObj.canPlayType('audio/mp3') ) {
 						$(this).data({
 							container : $(this),
 							soundObj  : audioObj,
@@ -75,23 +80,27 @@
 				var buttonPlay  = data.container.children('.sound_play');
 				var buttonStop  = data.container.children('.sound_stop');
 
+				// set player element defaults
+				buttonStop.attr('disabled','true');
+
+				$('object').css({ position : 'absolute' });
+
 				// enable mouse events; toggle play/pause button visibility
 				buttonPause.click(function() {
-					$(this).hide(0);
-
 					if (data.useFlash) {
 						data.soundObj.player('pause');
 					}
 					else {
-						data.soundObj.play();
+						data.soundObj.pause();
 					}
 
+					$(this).hide(0);
+
 					buttonPlay.show(0);
+					buttonStop.removeAttr('disabled');
 				});
 
 				buttonPlay.click(function() {
-					$(this).hide(0);
-
 					if (data.useFlash) {
 						data.soundObj.player('play');
 					}
@@ -99,7 +108,10 @@
 						data.soundObj.play();
 					}
 
+					$(this).hide(0);
+
 					buttonPause.show(0);
+					buttonStop.removeAttr('disabled');
 				});
 
 				buttonStop.click(function() {
@@ -111,8 +123,12 @@
 						data.soundObj.currentTime = 0;
 					}
 
+					$(this).attr('disabled','true');
+
 					buttonPause.hide(0);
 					buttonPlay.show(0);
+
+					$.fn.playComplete();
 				});
 
 				// enable HTML5 audio events
@@ -154,7 +170,11 @@
 	};
 
 	$.fn.playComplete = function() {
-		return;
+		$('.progress_bar').progressbar({
+			value : 0
+		});
+
+		$('.progress_timer').html('0:00');
 	};
 
 	$.fn.playProgress = function(duration, percent) {

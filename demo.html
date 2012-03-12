@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>MP3 Flashback</title>
@@ -22,7 +23,7 @@
 	<script src="MP3-Flashback.js"></script>
 	<script>
 	$(document).ready(function() {
-		$('#mp3_flashback').MP3Flashback({
+		$('#player').MP3Flashback({
 			playerId  : 'audio_player',
 			tracks    : {
 				file0 : 'demo.mp3'
@@ -40,7 +41,7 @@
 
 <!-- HTML example start -->
 
-<div id="mp3_flashback">
+<div id="player">
 	<div class="progress_bar"></div>
 
 	<audio id="audio_player"></audio>

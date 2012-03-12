@@ -12,60 +12,73 @@
  *    swfobject.js
  */
 
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
 body {
 	background-color: #FFFFFF;
 }
 
-#mp3_flashback {
+#player {
 	border: 3px double #EEEEEE;
-	height: 70px;
+	height: 54px;
 	margin: 25% auto 0px auto;
 	padding: 10px;
+	position: relative;
 	width: 175px;
 }
 
-#mp3_flashback button {
+#player button {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
 	cursor: pointer;
-	float: left;
-	margin-right: 10px;
-	padding: 10px;
-	position: relative;
-	top: 10px;
+	font-size: 11px;
+	height: 22px;
+	position: absolute;
+	top: 42px;
 	width: 50px;
 }
 
-#mp3_flashback button.sound_pause {
+#player button.sound_pause {
 	display: none;
+	left: 10px;
 }
 
-#mp3_flashback div.progress_bar {
+#player button.sound_play {
+	left: 10px;
+}
+
+#player button.sound_stop {
+	left: 70px;
+}
+
+#player div.progress_bar {
 	background-color: #E7E7E7;
 	border: 1px solid #BBBBBB;
 	height: 20px;
 	width: 173px;
 }
 
-#mp3_flashback span.progress_timer {
+#player span.progress_timer {
 	background-color: #F7F7F7;
-	border: 1px solid #EEEEEE;
+	border-bottom: 1px solid #EEEEEE;
+	border-top: 1px solid #EEEEEE;
 	color: #787878;
-	display: block;
-	float: right;
-	font-size: 14px;
-	height: 14px;
-	padding: 2px 4px 2px 0px;
-	position: relative;
-	right: 2px;
+	font-size: 15px;
+	height: 16px;
+	right: 10px;
+	padding: 2px 4px 2px 2px;
+	position: absolute;
 	text-align: right;
-	top: 10px;
-	width: 47px;
+	top: 42px;
+	width: 51px;
 }
 
 /* progress bar image */
 
-#mp3_flashback div.ui-progressbar-value {
+#player div.ui-progressbar-value {
 	background: url( images/progress.gif ) repeat;
 	height: 20px;
 }
