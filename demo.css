@@ -14,12 +14,13 @@
 
 body {
 	background-color: #FFFFFF;
+	font-family: Tienne, Sans-Serif;
 }
 
 #player {
 	border: 3px double #EEEEEE;
 	height: 54px;
-	margin: 25% auto 0px auto;
+	margin: 20% auto 0px auto;
 	padding: 10px;
 	position: relative;
 	width: 175px;
@@ -29,6 +30,7 @@ body {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
 	cursor: pointer;
+	font-family: Tienne, Sans-Serif;
 	font-size: 11px;
 	height: 22px;
 	position: absolute;
@@ -61,7 +63,7 @@ body {
 	border-bottom: 1px solid #EEEEEE;
 	border-top: 1px solid #EEEEEE;
 	color: #787878;
-	font-size: 15px;
+	font-size: 13px;
 	height: 16px;
 	right: 10px;
 	padding: 2px 4px 2px 2px;
