@@ -137,7 +137,7 @@
 					var minutes  = Math.floor(audioObj.currentTime / 60) % 60;
 					var seconds  = Math.floor(audioObj.currentTime % 60);
 					var duration = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-					var percent  = Math.floor(audioObj.currentTime / audioObj.duration * 100);
+					var percent  = Math.ceil(audioObj.currentTime / audioObj.duration * 100);
 
 					if (percent == 100) {
 						buttonStop.trigger('click');
