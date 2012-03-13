@@ -139,7 +139,12 @@
 					var duration = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 					var percent  = Math.floor(audioObj.currentTime / audioObj.duration * 100);
 
-					$.fn.playProgress(duration, percent);
+					if (percent == 100) {
+						buttonStop.trigger('click');
+					}
+					else {
+						$.fn.playProgress(duration, percent);
+					}
 				});
 			});
 		}
