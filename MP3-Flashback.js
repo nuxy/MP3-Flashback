@@ -189,7 +189,6 @@
 	}
 
 	function buttonStopEvent() {
-alert('wtf');
 		buttonPause.hide(0);
 		buttonPlay.show(0);
 		buttonStop.attr('disabled','true');
