@@ -38,16 +38,16 @@ body {
 	width: 50px;
 }
 
-#player button.sound_pause {
+#player button.button_pause {
 	display: none;
 	left: 10px;
 }
 
-#player button.sound_play {
+#player button.button_play {
 	left: 10px;
 }
 
-#player button.sound_stop {
+#player button.button_stop {
 	left: 70px;
 }
 
@@ -58,7 +58,7 @@ body {
 	width: 173px;
 }
 
-#player span.progress_timer {
+#player span.duration {
 	background-color: #F7F7F7;
 	border-bottom: 1px solid #EEEEEE;
 	border-top: 1px solid #EEEEEE;

@@ -13,6 +13,8 @@
  */
 
 (function($) {
+	var buttonPause, buttonPlay, buttonStop, progressBar, duraTimer;
+
 	var methods = {
 		init : function(options) {
 
@@ -27,7 +29,13 @@
 					data  = $this.data();
 
 				if ( $.isEmptyObject(data) ) {
-					var soundFile = settings.tracks.file0;	// TODO: multiple file playlist
+					buttonPause = $this.children('.button_pause');
+					buttonPlay  = $this.children('.button_play');
+					buttonStop  = $this.children('.button_stop');
+					progressBar = $this.children('.progress_bar');
+					duraTimer   = $this.children('.duration');
+
+					var soundFile = settings.tracks.file0;
 					var audioObj = null;
 
 					try {
@@ -38,9 +46,8 @@
 					// check support for HTML5 audio/MPEG3
 					if (audioObj && audioObj.canPlayType('audio/mp3') ) {
 						$(this).data({
-							container : $(this),
-							soundObj  : audioObj,
-							options   : settings
+							soundObj : audioObj,
+							options  : settings
 						});
 
 						$(this).MP3Flashback('setup');
@@ -48,13 +55,12 @@
 
 					// .. fallback to Flash
 					else {
-						swfobject.embedSWF('MP3-Flashback.swf', settings.playerId, '1','1','9.0','', settings.tracks, 'transparent','',
+						swfobject.embedSWF('MP3-Flashback.swf', settings.playerId, '0','0','9.0','', settings.tracks, 'transparent','',
 							function() {
 								$this.data({
-									container : $this,
-									soundObj  : window.document[settings.playerId],
-									useFlash  : true,
-									options   : settings
+									soundObj : window.document[settings.playerId],
+									useFlash : true,
+									options  : settings
 								});
 
 								$this.MP3Flashback('setup');
@@ -76,14 +82,7 @@
 				var $this = $(this),
 					data = $this.data();
 
-				var buttonPause = data.container.children('.sound_pause');
-				var buttonPlay  = data.container.children('.sound_play');
-				var buttonStop  = data.container.children('.sound_stop');
-
-				// set player element defaults
 				buttonStop.attr('disabled','true');
-
-				$('object').css({ position : 'absolute' });
 
 				// enable mouse events; toggle play/pause button visibility
 				buttonPause.click(function() {
@@ -94,10 +93,7 @@
 						data.soundObj.pause();
 					}
 
-					$(this).hide(0);
-
-					buttonPlay.show(0);
-					buttonStop.removeAttr('disabled');
+					buttonPauseEvent();
 				});
 
 				buttonPlay.click(function() {
@@ -108,10 +104,7 @@
 						data.soundObj.play();
 					}
 
-					$(this).hide(0);
-
-					buttonPause.show(0);
-					buttonStop.removeAttr('disabled');
+					buttonPlayEvent();
 				});
 
 				buttonStop.click(function() {
@@ -123,12 +116,7 @@
 						data.soundObj.currentTime = 0;
 					}
 
-					$(this).attr('disabled','true');
-
-					buttonPause.hide(0);
-					buttonPlay.show(0);
-
-					$.fn.playComplete();
+					buttonStopEvent();
 				});
 
 				// enable HTML5 audio events
@@ -175,18 +163,35 @@
 	};
 
 	$.fn.playComplete = function() {
-		$('.progress_bar').progressbar({
-			value : 0
-		});
-
-		$('.progress_timer').html('0:00');
+		progressBar.progressbar({ value : 0 });
+		duraTimer.html('0:00');
+		buttonStopEvent();
 	};
 
 	$.fn.playProgress = function(duration, percent) {
-		$('.progress_bar').progressbar({
-			value : percent
-		});
-
-		$('.progress_timer').html(duration);
+		progressBar.progressbar({ value : percent });
+		duraTimer.html(duration);
 	};
+
+	/*
+	 * Shared event functions
+	 */
+	function buttonPauseEvent() {
+		buttonPause.show(0);
+		buttonPlay.hide(0);
+		buttonStop.removeAttr('disabled');
+	}
+
+	function buttonPlayEvent() {
+		buttonPlay.hide(0);
+		buttonPause.show(0);
+		buttonStop.removeAttr('disabled');
+	}
+
+	function buttonStopEvent() {
+alert('wtf');
+		buttonPause.hide(0);
+		buttonPlay.show(0);
+		buttonStop.attr('disabled','true');
+	}
 })(jQuery);
