@@ -4,8 +4,9 @@ This project is currently in development with no set time of release.
 
 == TODO
 
-- Volume controls
-- Playlist support
+- Loading event animations
+- Volume control events
+- Playlist support (ID3v1 tags)
 
 == Author
 
