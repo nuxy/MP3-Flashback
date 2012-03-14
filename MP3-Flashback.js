@@ -13,7 +13,7 @@
  */
 
 (function($) {
-	var buttonPause, buttonPlay, buttonStop, progressBar, duraTimer;
+	var buttonPause, buttonPlay, buttonStop, progressBar, duraTimer, volumeBar;
 
 	var methods = {
 		init : function(options) {
@@ -34,6 +34,7 @@
 					buttonStop  = $this.children('.button_stop');
 					progressBar = $this.children('.progress_bar');
 					duraTimer   = $this.children('.duration');
+					volumeBar   = $this.children('.volume_bar');
 
 					var soundFile = settings.tracks.file0;
 					var audioObj = null;
@@ -83,6 +84,14 @@
 					data = $this.data();
 
 				buttonStop.attr('disabled','true');
+
+				// init volume controls
+				volumeBar.slider({
+					range : 'min',
+					min   : 1,
+					max   : 175,
+					value : 112
+				});
 
 				// enable mouse events; toggle play/pause button visibility
 				buttonPause.click(function() {

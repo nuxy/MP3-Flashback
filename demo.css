@@ -19,7 +19,7 @@ body {
 
 #player {
 	border: 3px double #EEEEEE;
-	height: 54px;
+	height: 74px;
 	margin: 20% auto 0px auto;
 	padding: 10px;
 	position: relative;
@@ -78,4 +78,29 @@ body {
 #player div.ui-progressbar-value {
 	background: url( images/progress.gif ) repeat;
 	height: 20px;
+}
+
+#player div.ui-slider-horizontal,
+#player a.ui-slider-handle {
+	background-color: #F7F7F7;
+	position: relative;
+}
+
+div.ui-slider-horizontal {
+	border: 1px solid #CCCCCC;
+	height: 5px;
+	top: 45px;
+}
+
+#player a.ui-slider-handle {
+	border: 1px solid #999999;
+	display: block;
+	height: 11px;
+	top: -9px;
+	width: 5px;
+}
+
+#player div.ui-slider-range {
+	background-color: #000000;
+	height: 5px;
 }
