@@ -81,22 +81,22 @@ body {
 	height: 20px;
 }
 
-#player div.ui-slider-horizontal,
-#player a.ui-slider-handle {
-	background-color: #F7F7F7;
-	position: relative;
-}
+/* slider volume control */
 
 div.ui-slider-horizontal {
+	background-color: #F7F7F7;
 	border: 1px solid #CCCCCC;
 	height: 5px;
+	position: relative;
 	top: 45px;
 }
 
 #player a.ui-slider-handle {
+	background-color: #E7E7E7;
 	border: 1px solid #999999;
 	display: block;
 	height: 11px;
+	position: relative;
 	top: -9px;
 	width: 5px;
 }

@@ -85,7 +85,7 @@
 
 				buttonStop.attr('disabled','true');
 
-				// init volume controls
+				// initalize volume slider
 				volumeBar.slider({
 					range : 'min',
 					min   : 1,
