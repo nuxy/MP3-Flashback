@@ -39,6 +39,7 @@ body {
 }
 
 #player button.button_pause {
+	border: 1px dotted #CCCCCC;
 	display: none;
 	left: 10px;
 }
@@ -62,7 +63,7 @@ body {
 	background-color: #F7F7F7;
 	border-bottom: 1px solid #EEEEEE;
 	border-top: 1px solid #EEEEEE;
-	color: #787878;
+	color: #444444;
 	font-size: 13px;
 	height: 16px;
 	right: 10px;
@@ -101,6 +102,6 @@ div.ui-slider-horizontal {
 }
 
 #player div.ui-slider-range {
-	background-color: #000000;
+	background-color: #333333;
 	height: 5px;
 }

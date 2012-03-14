@@ -186,8 +186,8 @@
 	 * Shared event functions
 	 */
 	function buttonPauseEvent() {
-		buttonPause.show(0);
-		buttonPlay.hide(0);
+		buttonPause.hide(0);
+		buttonPlay.show(0);
 		buttonStop.removeAttr('disabled');
 	}
 
