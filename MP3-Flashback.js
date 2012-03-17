@@ -20,8 +20,7 @@
 
 			// default option
 			var settings = $.extend({
-				playerId : 'player',
-				tracks   : null
+				tracks : null
 			}, options);
 
 			return this.each(function() {
@@ -56,10 +55,17 @@
 
 					// .. fallback to Flash
 					else {
-						swfobject.embedSWF('MP3-Flashback.swf', settings.playerId, '0','0','9.0','', settings.tracks, 'transparent','',
+						var objectId = genRandStr(10);
+
+						var flashObj = $('<object></object>')
+							.attr('id', objectId);
+
+						$this.append(flashObj)
+
+						swfobject.embedSWF('MP3-Flashback.swf', objectId, '0','0','9.0','', settings.tracks, 'transparent','',
 							function() {
 								$this.data({
-									soundObj : window.document[settings.playerId],
+									soundObj : window.document[objectId],
 									useFlash : true,
 									options  : settings
 								});
@@ -201,5 +207,19 @@
 		buttonPause.hide(0);
 		buttonPlay.show(0);
 		buttonStop.attr('disabled','true');
+	}
+
+	/*
+	 *  Generate a pseudo-random string
+	 */
+	function genRandStr(len) {
+		var count = (len) ? len : 8;
+		var chars = "abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ0123456789".split('');
+		var str   = '';
+
+		for (var i = 0; i < count; i++) {
+			str += chars[ Math.floor(Math.random() * chars.length) ];
+		}
+		return str;
 	}
 })(jQuery);
