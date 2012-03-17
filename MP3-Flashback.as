@@ -14,6 +14,7 @@ import flash.events.Event;
 import flash.events.ProgressEvent;
 import flash.media.Sound;
 import flash.media.SoundChannel;
+import flash.media.SoundTransform;
 
 // enable external callbacks
 ExternalInterface.addCallback('player', soundPlayer);
@@ -22,17 +23,22 @@ ExternalInterface.addCallback('player', soundPlayer);
 var param:Object = LoaderInfo(this.root.loaderInfo).parameters;
 
 // register globals
-var isLoaded:Boolean  = false;
+var isLoading:Boolean = false;
 var isPlaying:Boolean = false;
 var startTime:Number  = 0.0;
-var soundChannel:SoundChannel;
 var soundFile:Sound;
+var soundChan:SoundChannel;
+var soundTran:SoundTransform;
 
 /*
  * Initialize sound object
  */
 (function init() {
 	soundFile = new Sound();
+	soundChan = new SoundChannel();
+	soundTran = new SoundTransform();
+
+	// .. bind events
 	soundFile.load(new URLRequest(param.file0));
 	soundFile.addEventListener(Event.COMPLETE, loadComplete);
 	soundFile.addEventListener(ProgressEvent.PROGRESS, loadProgress);
@@ -46,7 +52,7 @@ function loadProgress(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		var percent:Number = Math.ceil((((soundFile.bytesLoaded * 100) / soundFile.bytesTotal) * 100));
 		ExternalInterface.call('$.fn.loadProgress', percent);
-		isLoaded = false;
+		isLoading = true;
 	}
 }
 
@@ -54,7 +60,7 @@ function loadComplete(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		soundFile.removeEventListener(Event.COMPLETE, loadComplete);
 		ExternalInterface.call('$.fn.loadComplete');
-		isLoaded = true;
+		isLoading = false;
 	}
 }
 
@@ -62,12 +68,12 @@ function loadComplete(e:Event) {
  * Callbacks when playing MP3s; returns duration and percent as function arguments
  */
 function playProgress(e:Event) {
-	if (isLoaded) {
-		var minutes:uint    = Math.floor(soundChannel.position / 1000  / 60);
-		var seconds:uint    = Math.floor(soundChannel.position / 1000) % 60;
+	if (!isLoading) {
+		var minutes:uint    = Math.floor(soundChan.position / 1000  / 60);
+		var seconds:uint    = Math.floor(soundChan.position / 1000) % 60;
 		var duration:String = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 		var loaded:Number   = soundFile.bytesLoaded  / soundFile.bytesTotal;
-		var percent:Number  = Math.ceil(((soundChannel.position / soundFile.length * loaded) * 100));
+		var percent:Number  = Math.ceil(((soundChan.position / soundFile.length * loaded) * 100));
 
 		if (percent == 100) {
 			isPlaying = false;
@@ -85,16 +91,16 @@ function playComplete() {
 }
 
 /*
- * MP3 player controls: Play, Pause, and Stop
+ * MP3 player controls: Play, Pause, Stop, and Volume events
  */
-function soundPlayer(action):void {
-	if (!isLoaded) { return }
+function soundPlayer(action, volValue=null):void {
+	if (isLoading) { return }
 
 	switch(action) {
 		case 'play' :
 			if (isPlaying) { return }
 			isPlaying = true;
-			soundChannel = soundFile.play(startTime);
+			soundChan = soundFile.play(startTime);
 			addEventListener(Event.ENTER_FRAME, playProgress);
 		break;
 
@@ -104,8 +110,8 @@ function soundPlayer(action):void {
 			}
 			else {
 				isPlaying = false;
-				startTime = soundChannel.position;
-				soundChannel.stop();
+				startTime = soundChan.position;
+				soundChan.stop();
 				removeEventListener(Event.ENTER_FRAME, playProgress);
 			}
 		break;
@@ -114,9 +120,15 @@ function soundPlayer(action):void {
 			if (!isPlaying) { return }
 			isPlaying = false;
 			startTime = 0.0;
-			soundChannel.stop();
+			soundChan.stop();
 			removeEventListener(Event.ENTER_FRAME, playProgress);
 			playComplete();
+		break;
+
+		case 'volume' :
+			if (!volValue) { return }
+			soundTran.volume = volValue;
+			soundChan.soundTransform = soundTran;
 		break;
 	}
 }

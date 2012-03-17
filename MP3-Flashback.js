@@ -95,8 +95,18 @@
 				volumeBar.slider({
 					range : 'min',
 					min   : 1,
-					max   : 175,
-					value : 112
+					max   : 100,
+					value : 75,
+					slide : function(e, ui) {
+						var soundVol = parseFloat(ui.value / 100);
+
+						if (data.useFlash) {
+							data.soundObj.player('volume', soundVol);
+						}
+						else {
+							data.soundObj.volume = soundVol;
+						}
+					}
 				});
 
 				// enable mouse events; toggle play/pause button visibility
