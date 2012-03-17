@@ -40,6 +40,7 @@ body {
 
 #player button.button_pause {
 	border: 1px dotted #CCCCCC;
+	color: #787878;
 	display: none;
 	left: 10px;
 }
@@ -76,14 +77,22 @@ body {
 
 /* progress bar image */
 
-#player div.ui-progressbar-value {
+#player div.ui-progressbar-value,
+#player div.ui-progressbar-value.pause,
+#player div.ui-progressbar-value.play {
 	background: url( images/progress.gif ) repeat;
 	height: 20px;
 }
 
+#player div.ui-progressbar-value.pause {
+	background: none;
+	background-color: #BBBBBB;
+}
+
+
 /* slider volume control */
 
-div.ui-slider-horizontal {
+#player div.ui-slider-horizontal {
 	background-color: #F7F7F7;
 	border: 1px solid #CCCCCC;
 	height: 5px;

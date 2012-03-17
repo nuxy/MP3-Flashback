@@ -205,12 +205,16 @@
 		buttonPause.hide(0);
 		buttonPlay.show(0);
 		buttonStop.removeAttr('disabled');
+		progressBar.children('.ui-progressbar-value')
+			.toggleClass('play pause');
 	}
 
 	function buttonPlayEvent() {
 		buttonPlay.hide(0);
 		buttonPause.show(0);
 		buttonStop.removeAttr('disabled');
+		progressBar.children('.ui-progressbar-value')
+			.toggleClass('pause play');
 	}
 
 	function buttonStopEvent() {
