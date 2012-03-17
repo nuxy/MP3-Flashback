@@ -45,12 +45,12 @@
 
 					// check support for HTML5 audio/MPEG3
 					if (audioObj && audioObj.canPlayType('audio/mp3') ) {
-						$(this).data({
+						$this.data({
 							soundObj : audioObj,
 							options  : settings
 						});
 
-						$(this).MP3Flashback('setup');
+						$this.MP3Flashback('setup');
 					}
 
 					// .. fallback to Flash
