@@ -2,10 +2,9 @@
 
 This project is currently in development with no set time of release.
 
-== TODO
+== To Do
 
 - Loading event animations
-- Volume control events
 - Playlist support (ID3v1 tags)
 
 == Author
