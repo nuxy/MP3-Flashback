@@ -206,7 +206,7 @@
 		buttonPlay.show(0);
 		buttonStop.removeAttr('disabled');
 		progressBar.children('.ui-progressbar-value')
-			.toggleClass('play pause');
+			.toggleClass('play stop');
 	}
 
 	function buttonPlayEvent() {
@@ -214,13 +214,15 @@
 		buttonPause.show(0);
 		buttonStop.removeAttr('disabled');
 		progressBar.children('.ui-progressbar-value')
-			.toggleClass('pause play');
+			.toggleClass('stop play');
 	}
 
 	function buttonStopEvent() {
 		buttonPause.hide(0);
 		buttonPlay.show(0);
 		buttonStop.attr('disabled','true');
+		progressBar.children('.ui-progressbar-value')
+			.toggleClass('stop play');
 	}
 
 	/*

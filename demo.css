@@ -78,13 +78,13 @@ body {
 /* progress bar image */
 
 #player div.ui-progressbar-value,
-#player div.ui-progressbar-value.pause,
-#player div.ui-progressbar-value.play {
+#player div.ui-progressbar-value.play,
+#player div.ui-progressbar-value.stop {
 	background: url( images/progress.gif ) repeat;
 	height: 20px;
 }
 
-#player div.ui-progressbar-value.pause {
+#player div.ui-progressbar-value.stop {
 	background: none;
 	background-color: #BBBBBB;
 }
