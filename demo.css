@@ -1,16 +1,4 @@
-/*
- *  MP3 Flashback
- *  An elegant MP3 Flash fallback when HTML5 audio is not supported
- *
- *  Copyright 2012, Marc S. Brooks (http://mbrooks.info)
- *  Licensed under the MIT license:
- *  http://www.opensource.org/licenses/mit-license.php
- *
- *  Dependencies:
- *    jquery.js
- *    jquery-ui.js
- *    swfobject.js
- */
+/* example */
 
 #player {
 	background-color: #FFFFFF;
@@ -74,41 +62,37 @@
 	width: 51px;
 }
 
-/* progress bar image */
 
-#player div.ui-progressbar-value,
-#player div.ui-progressbar-value.play,
-#player div.ui-progressbar-value.stop {
+/* customize */
+
+div.ui-progressbar-value,
+div.ui-progressbar-value.play,
+div.ui-progressbar-value.stop {
 	background: #BBBBBB url( images/progress.gif ) repeat;
 	height: 20px;
 }
 
-#player div.ui-progressbar-value.stop {
+div.ui-progressbar-value.stop {
 	background: #BBBBBB none;
 }
 
-
-/* slider volume control */
-
-#player div.ui-slider-horizontal {
+div.ui-slider-horizontal {
 	background-color: #F7F7F7;
 	border: 1px solid #CCCCCC;
 	height: 5px;
-	position: relative;
 	top: 45px;
 }
 
-#player a.ui-slider-handle {
+a.ui-slider-handle {
 	background-color: #E7E7E7;
 	border: 1px solid #999999;
 	display: block;
 	height: 11px;
-	position: relative;
 	top: -9px;
 	width: 5px;
 }
 
-#player div.ui-slider-range {
+div.ui-slider-range {
 	background-color: #333333;
 	height: 5px;
 }
