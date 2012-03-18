@@ -63,6 +63,7 @@
 					else {
 						var objectId = genRandStr(10);
 						var flashObj = $('<object></object>').attr('id', objectId);
+
 						$this.append(flashObj)
 
 						swfobject.embedSWF('MP3-Flashback.swf', objectId, '0','0','9.0','', settings.tracks, 'transparent','',

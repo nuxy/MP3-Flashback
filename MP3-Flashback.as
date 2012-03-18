@@ -59,6 +59,7 @@ function loadProgress(e:Event) {
 function loadComplete(e:Event) {
 	if (soundFile && soundFile.length > 0) {
 		soundFile.removeEventListener(Event.COMPLETE, loadComplete);
+		soundFile.removeEventListener(ProgressEvent.PROGRESS, loadProgress);
 		ExternalInterface.call('$.fn.loadComplete');
 		isLoading = false;
 	}
