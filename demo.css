@@ -12,11 +12,6 @@
  *    swfobject.js
  */
 
-body {
-	background-color: #FFFFFF;
-	font-family: Tienne, Sans-Serif;
-}
-
 #player {
 	background-color: #FFFFFF;
 	border: 3px double #EEEEEE;
@@ -35,7 +30,6 @@ body {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
 	cursor: pointer;
-	font-family: Tienne, Sans-Serif;
 	font-size: 11px;
 	height: 22px;
 	position: absolute;
