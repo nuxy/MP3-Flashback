@@ -18,12 +18,17 @@ body {
 }
 
 #player {
+	background-color: #FFFFFF;
 	border: 3px double #EEEEEE;
 	height: 74px;
 	margin: 20% auto 0px auto;
 	padding: 10px;
 	position: relative;
 	width: 175px;
+}
+
+#player.loading {
+	background: transparent url( images/loading.gif ) no-repeat center;
 }
 
 #player button {
@@ -80,13 +85,12 @@ body {
 #player div.ui-progressbar-value,
 #player div.ui-progressbar-value.play,
 #player div.ui-progressbar-value.stop {
-	background: url( images/progress.gif ) repeat;
+	background: #BBBBBB url( images/progress.gif ) repeat;
 	height: 20px;
 }
 
 #player div.ui-progressbar-value.stop {
-	background: none;
-	background-color: #BBBBBB;
+	background: #BBBBBB none;
 }
 
 
