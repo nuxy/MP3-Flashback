@@ -10,8 +10,9 @@ I want my *Flash* _back_ when the following conditions are met:
 == Features
 
 - Compatible with Firefox 3.6+, Chrome, Safari 5+, Opera, and Internet Explorer 7+ web browsers.
+- Standard player functionality including progress bar, volume controls, and duration timer.
 - Easy to set-up and customize
-- Supports multiple instances on a single document.
+- Supports multiple player instances on a single document.
 - Fast and lightweight (jQuery plug-in *only 3 kB)
 
 == Installation
