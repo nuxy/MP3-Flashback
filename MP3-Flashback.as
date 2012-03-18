@@ -117,7 +117,6 @@ function soundPlayer(action, volValue=null):void {
 		break;
 
 		case 'stop' :
-			if (!isPlaying) { return }
 			isPlaying = false;
 			startTime = 0.0;
 			soundChan.stop();
