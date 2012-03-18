@@ -1,11 +1,26 @@
 = MP3 Flashback
 
-This project is currently in development with no set time of release.
+When the pain from HTML5 audio incompatibilites and lack of support for MP3's becomes too much to bare.
+
+I want my *Flash* _back_ when the following conditions are met:
+
+- HTML5 audio element is *NOT* supported
+- MP3 format is *NOT* supported
+
+== Features
+
+- Compatible with Firefox 3.6+, Chrome, Safari 5+, Opera, and Internet Explorer 7+ web browsers.
+- Easy to set-up and customize
+- Supports multiple instances on a single document.
+- Fast and lightweight (jQuery plug-in *only 3 kB)
+
+== Installation
+
+Please refer to the {README.html}[https://github.com/nuxy/MP3-Flashback/blob/master/README.html] file for more information about this package.
 
 == To Do
 
-- Loading event animations
-- Playlist support (ID3v1 tags)
+- Playlist - Support for multiple files in a single instance
 
 == Author
 
