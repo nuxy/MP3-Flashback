@@ -10,10 +10,6 @@
 	width: 175px;
 }
 
-#player.loading {
-	background: transparent url( images/loading.gif ) no-repeat center;
-}
-
 #player button {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
@@ -64,6 +60,10 @@
 
 
 /* customize */
+
+.loading {
+	background: transparent url( images/loading.gif ) no-repeat center;
+}
 
 div.ui-progressbar-value,
 div.ui-progressbar-value.play,
