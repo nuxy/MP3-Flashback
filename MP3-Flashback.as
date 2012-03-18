@@ -50,7 +50,7 @@ var soundTran:SoundTransform;
  */
 function loadProgress(e:Event) {
 	if (soundFile && soundFile.length > 0) {
-		var percent:Number = Math.ceil((((soundFile.bytesLoaded * 100) / soundFile.bytesTotal) * 100));
+		var percent:Number = Math.ceil(((soundFile.bytesLoaded / soundFile.bytesTotal) * 100));
 		ExternalInterface.call('$.fn.loadProgress', percent);
 		isLoading = true;
 	}
