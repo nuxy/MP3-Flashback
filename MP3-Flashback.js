@@ -189,12 +189,12 @@
 	 */
 	$.fn.loadComplete = function() {
 		soundPlayer.removeClass('loading');
-		soundPlayer.children().fadeIn('slow');
+		soundPlayer.children('.button_play, .button_stop, div, span').fadeIn('slow');
 	};
 
 	$.fn.loadProgress = function(percent) {
 		soundPlayer.addClass('loading');
-		soundPlayer.children().css({ display : 'none' });
+		soundPlayer.children('button, div, span').css({ display : 'none' });
 	};
 
 	$.fn.playComplete = function() {
