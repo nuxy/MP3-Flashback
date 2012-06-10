@@ -2,7 +2,6 @@
 
 #player {
 	background-color: #FFFFFF;
-	border: 3px double #EEEEEE;
 	height: 74px;
 	margin: 20% auto 0px auto;
 	padding: 10px;
@@ -63,6 +62,7 @@
 
 .loading {
 	background: transparent url( images/loading.gif ) no-repeat center;
+	border: 0px;
 }
 
 div.ui-progressbar-value,
