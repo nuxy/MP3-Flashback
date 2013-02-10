@@ -2,7 +2,7 @@
  *  MP3 Flashback
  *  An elegant MP3 Flash fallback when HTML5 audio is not supported
  *
- *  Copyright 2012, Marc S. Brooks (http://mbrooks.info)
+ *  Copyright 2012-2013, Marc S. Brooks (http://mbrooks.info)
  *  Licensed under the MIT license:
  *  http://www.opensource.org/licenses/mit-license.php
  *
@@ -16,7 +16,7 @@
 	var soundPlayer, buttonPause, buttonPlay, buttonStop, progressBar, duraTimer, volumeBar;
 
 	var methods = {
-		init : function(options) {
+		"init" : function(options) {
 
 			// default option
 			var settings = $.extend({
@@ -82,13 +82,13 @@
 			});
 		},
 
-		destroy : function() {
+		"destroy" : function() {
 			return this.each(function() {
 				$(this).removeData();
 			});
 		},
 
-		setup : function() {
+		"setup" : function() {
 			return this.each(function() {
 				var $this = $(this),
 					data = $this.data();
