@@ -20,7 +20,7 @@ http://github.com/nuxy/MP3-Flashback/raw/master/preview.jpg
 
 == Installation
 
-Download the latest {sources}[https://github.com/nuxy/MP3-Flashback/downloads] and refer to the {README}[http://labs.mbrooks.info/demos/MP3-Flashback/README.html] for more information about this package.
+Download the latest {sources}[https://github.com/nuxy/MP3-Flashback/tags] and refer to the {README}[http://labs.mbrooks.info/demos/MP3-Flashback/README.html] for more information about this package.
 
 == To Do
 
