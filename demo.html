@@ -1,78 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="http://www.google.com/jsapi"></script>
-	<script>
-		google.load('jquery','1.7.1');
-		google.load('jqueryui','1.8.16');
-		google.load('swfobject','2.2');
-	</script>
+  <script src="http://www.google.com/jsapi"></script>
+  <script>
+    google.load('jquery','1.7.1');
+    google.load('jqueryui','1.8.16');
+    google.load('swfobject','2.2');
+  </script>
 
 
-	<!-- CSS include start -->
+  <!-- CSS include start -->
 
-	<link rel="stylesheet" type="text/css" href="MP3-Flashback.min.css">
+  <link rel="stylesheet" type="text/css" href="MP3-Flashback.min.css">
 
-	<!-- CSS include end -->
-
-
-	<!-- Javascript insert start -->
-
-	<script src="MP3-Flashback.min.js"></script>
-	<script>
-	$(document).ready(function() {
-		$('#player').MP3Flashback({
-			tracks : {
-				file0 : 'demo.mp3'
-			}
-		});
-	});
-	</script>
-
-	<!-- Javascript insert end -->
+  <!-- CSS include end -->
 
 
-	<!-- CSS overrides start -->
+  <!-- Javascript insert start -->
 
-	<link rel="stylesheet" type="text/css" href="http://mbrooks.info/demo.css">
-	<link rel="stylesheet" type="text/css" href="demo.css">
+  <script src="MP3-Flashback.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#player').MP3Flashback({
+      tracks : {
+        file0 : 'demo.mp3'
+      }
+    });
+  });
+  </script>
 
-	<!-- CSS overrides start -->
+  <!-- Javascript insert end -->
 
 
-	<title>MP3 Flashback - An elegant MP3 Flash fallback when HTML5 audio is not supported</title>
+  <!-- CSS overrides start -->
+
+  <link rel="stylesheet" type="text/css" href="http://mbrooks.info/demo.css">
+  <link rel="stylesheet" type="text/css" href="demo.css">
+
+  <!-- CSS overrides end -->
+
+
+  <title>MP3 Flashback - An elegant MP3 Flash fallback when HTML5 audio is not supported</title>
 </head>
 <body>
 
 <p id="about">
-	This <strong>jQuery</strong> plugin is <a href="MP3-Flashback.min.js" title="Only 3 kb">lightweight</a>, easy to <a href="README.html#install" title="Installation">install</a> / <a href="demo.css" title="Stylesheet">customize</a>, and works on all modern web browsers.
+  This <strong>jQuery</strong> plugin is <a href="MP3-Flashback.min.js" title="Only 3 kb">lightweight</a>, easy to <a href="README.html#install" title="Installation">install</a> / <a href="demo.css" title="Stylesheet">customize</a>, and works on all modern web browsers.
 </p>
 
 
 <!-- HTML example start -->
 
 <div id="player">
-	<div class="progress_bar"></div>
+  <div class="progress_bar"></div>
 
-	<button class="button_pause" type="button">Pause</button>
-	<button class="button_play" type="button">Play</button>
-	<button class="button_stop" type="button">Stop</button>
+  <button class="button_pause" type="button">Pause</button>
+  <button class="button_play" type="button">Play</button>
+  <button class="button_stop" type="button">Stop</button>
 
-	<span class="duration"></span>
+  <span class="duration"></span>
 
-	<div class="volume_bar"></div>
+  <div class="volume_bar"></div>
 </div>
 
 <!-- HTML example end -->
 
 
-<!-- footer start -->
+<!-- Footer start -->
 
 <div id="footer">
-	<span class="copy">&#169; 2012-2013 <a href="http://mbrooks.info">Marc S. Brooks</a></span>
+  <span class="copy">&#169; 2012-2015 <a href="https://mbrooks.info">Marc S. Brooks</a></span>
 </div>
 
-<!-- footer end -->
+<!-- Footer end -->
 
 
 </body>
