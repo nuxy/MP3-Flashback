@@ -1,4 +1,4 @@
-# MP3 Flashback
+# MP3 Flashback - EOL (for reference only)
 
 When the pain from HTML5 audio incompatibilites and lack of support for MP3's becomes too much to bare.
 
