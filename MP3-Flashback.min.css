@@ -1,0 +1,2 @@
+/* Copyright 2012-2015, Marc S. Brooks (https://mbrooks.info) */
+.loading{background:transparent url( images/loading.gif ) no-repeat center;}.ui-progressbar-value,.ui-progressbar-value.play,.ui-progressbar-value.stop{background:transparent url( images/progress.gif ) repeat;}.ui-progressbar-value.stop{background:transparent none;}.ui-slider-handle,.ui-slider-horizontal{position:relative;}.ui-slider-range{background-color:#000000;}

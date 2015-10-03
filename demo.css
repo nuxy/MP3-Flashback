@@ -1,0 +1,98 @@
+/* Example */
+
+#player {
+  background-color: #FFFFFF;
+  height: 74px;
+  margin: 20% auto 0px auto;
+  padding: 10px;
+  position: relative;
+  width: 175px;
+}
+
+#player button {
+  background-color: #EEEEEE;
+  border: 1px solid #CCCCCC;
+  cursor: pointer;
+  font-size: 11px;
+  height: 22px;
+  position: absolute;
+  top: 42px;
+  width: 50px;
+}
+
+#player button.button_pause {
+  border: 1px dotted #CCCCCC;
+  color: #787878;
+  display: none;
+  left: 10px;
+}
+
+#player button.button_play {
+  left: 10px;
+}
+
+#player button.button_stop {
+  left: 70px;
+}
+
+#player div.progress_bar {
+  background-color: #E7E7E7;
+  border: 1px solid #BBBBBB;
+  height: 20px;
+  width: 173px;
+}
+
+#player span.duration {
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #EEEEEE;
+  color: #444444;
+  font-size: 13px;
+  height: 16px;
+  right: 10px;
+  padding: 2px 4px 2px 2px;
+  position: absolute;
+  text-align: right;
+  top: 42px;
+  width: 51px;
+}
+
+
+/* Customize */
+
+.loading {
+  background: transparent url( images/loading.gif ) no-repeat center;
+  border: 0px;
+}
+
+div.ui-progressbar-value,
+div.ui-progressbar-value.play,
+div.ui-progressbar-value.stop {
+  background: #BBBBBB url( images/progress.gif ) repeat;
+  height: 20px;
+}
+
+div.ui-progressbar-value.stop {
+  background: #BBBBBB none;
+}
+
+div.ui-slider-horizontal {
+  background-color: #F7F7F7;
+  border: 1px solid #CCCCCC;
+  height: 5px;
+  top: 45px;
+}
+
+a.ui-slider-handle {
+  background-color: #E7E7E7;
+  border: 1px solid #999999;
+  display: block;
+  height: 11px;
+  top: -9px;
+  width: 5px;
+}
+
+div.ui-slider-range {
+  background-color: #333333;
+  height: 5px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <!-- Javascript insert start -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script src="MP3-Flashback.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#player').MP3Flashback({
+      tracks : {
+        file0 : 'demo.mp3'
+      }
+    });
+  });
+  </script>
+
+  <!-- Javascript insert end -->
+
+
+  <!-- CSS include start -->
+  
+  <link rel="stylesheet" type="text/css" href="MP3-Flashback.min.css">
+  
+  <!-- CSS include end -->
+
+
+  <!-- CSS overrides start -->
+
+  <link rel="stylesheet" type="text/css" href="https://mbrooks.info/demo.min.css">
+  <link rel="stylesheet" type="text/css" href="demo.css">
+
+  <!-- CSS overrides end -->
+
+
+  <title>MP3 Flashback - An elegant MP3 Flash fallback when HTML5 audio is not supported.</title>
+</head>
+<body>
+
+<p id="about">
+  This <strong>jQuery</strong> plugin is <a href="MP3-Flashback.min.js" title="Only 3.2 kb">lightweight</a>, easy to <a href="README.html#install" title="Installation">install</a> / <a href="demo.css" title="Stylesheet">customize</a>, and works on all modern web browsers.
+</p>
+
+
+<!-- HTML example start -->
+
+<div id="player">
+  <div class="progress_bar"></div>
+
+  <button class="button_pause" type="button">Pause</button>
+  <button class="button_play" type="button">Play</button>
+  <button class="button_stop" type="button">Stop</button>
+
+  <span class="duration"></span>
+
+  <div class="volume_bar"></div>
+</div>
+
+<!-- HTML example end -->
+
+
+<!-- Footer start -->
+
+<div id="footer">
+  <span class="copy">&#169; 2012-2015 <a href="https://mbrooks.info">Marc S. Brooks</a></span>
+</div>
+
+<!-- Footer end -->
+
+
+</body>
+</html>

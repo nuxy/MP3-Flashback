@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="http://mbrooks.info/readme.min.css">
+
+  <title>MP3 Flashback - README</title>
+</head>
+<body>
+
+<h1>MP3 Flashback</h1>
+
+<p>When the pain from HTML5 audio incompatibilites and lack of support for MP3's becomes too much to bare.</p>
+
+<p>I want my <strong>Flash</strong> <em>back</em> when the following conditions are met:</p>
+
+<ul>
+  <li>HTML5 audio element is <strong>NOT</strong> supported</li>
+  <li>MP3 format is <strong>NOT</strong> supported</li>
+</ul>
+
+<h2>Features</h2>
+
+<ul>
+  <li>Compatible with Firefox 3.6+, Chrome, Safari 5+, Opera, and Internet Explorer 7+ web browsers.</li>
+  <li>Compatible with iOS and Android mobile web browsers.</li>
+  <li>Standard player functionality including progress bar, volume controls, and duration timer.</li>
+  <li>Easy to set-up and customize.</li>
+  <lI>Supports multiple player instances on a single document.</li>
+  <li>Fast and lightweight (jQuery plug-in *only 3 kB)</li>
+</ul>
+
+<p>Check out the <a href="demo.html">demo</a> provided with this package.</p>
+
+<a name="install"></a>
+
+<h2>Installation</h2>
+
+<ol>
+  <li>Download the latest <a href="https://github.com/nuxy/MP3-Flashback/tags">sources</a> to your computer using a web browser.</li>
+  <li>Extract the contents of the <em>.zip</em> into a folder on your local computer.</li>
+  <li>Upload the folder with the <strong>following files</strong> to your web site.</li>
+</ol>
+
+<table border="1">
+  <tr>
+    <th>Filename</th>
+    <th>Role</th>
+  </tr>
+  <tr>
+    <td>MP3-Flashback.min.js</td>
+    <td>The main script to be included from within your HTML document.</td>
+  </tr>
+  <tr>
+    <td>MP3-Flashback.min.css</td>
+    <td>This style sheet that defines the "look & feel" of the progress bar and volume slider</td>
+  </tr>
+  <tr>
+    <td>MP3-Flashback.swf</td>
+    <td>Flash based fallback when HTML5 audio/MP3 licensing is not supported.</td>
+  </tr>
+  <tr>
+    <td>images/loading.gif</td>
+    <td>Animation used during a loading event.</td>
+  </tr>
+  <tr>
+    <td>images/progress.gif</td>
+    <td>Animation used when playing an audio file.</td>
+  </tr>
+</table>
+
+<h2>Set-up</h2>
+
+<p>When working with multiple players it is important to attach each <a href="http://api.jquery.com/category/selectors">jQuery selector</a> to a unique element.</p>
+
+<pre>$(selector).MP3Flashback(<a href="#options"><em>options</em></a>);</pre>
+
+<h2>Source Code</h2>
+
+<p>Add the following Javascript between the <code>&lt;head&gt;&lt;/head&gt;</code> tags of your HTML document.</p>
+
+<pre>
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"&gt;&lt;/script&gt;
+
+&lt;script src="/path/to/MP3-Flashback.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function() {
+  $('#player').MP3Flashback({
+    tracks : {
+      file0 : 'path/to/file.mp3'
+    }
+  });
+});
+&lt;/script&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="MP3-Flashback.min.css"&gt;</pre>
+
+<p>Create a simple MP3 player using the following HTML structure.  It's pretty self-explanatory.</p>
+
+<pre>
+&lt;div id="player"&gt;
+  &lt;div class="progress_bar"&gt;&lt;/div&gt;
+
+  &lt;button class="button_pause" type="button"&gt;Pause&lt;/button&gt;
+  &lt;button class="button_play" type="button"&gt;Play&lt;/button&gt;
+  &lt;button class="button_stop" type="button"&gt;Stop&lt;/button&gt;
+
+  &lt;span class="duration"&gt;&lt;/span&gt;
+
+  &lt;div class="volume_bar"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<a name="options"></a>
+
+<h2>Plug-in Settings</h2>
+
+<p>The following options can be passed to the plug-in main function as JSON</p>
+
+<table border="1">
+  <tr>
+    <th>Option</th>
+    <th>Description</th>
+    <th>Default Value</th>
+  </tr>
+  <tr>
+    <td>volumeStart</td>
+    <td>initial volume when audio file is played (scale 0/100)</td>
+    <td>70</td>
+  </tr>
+  <tr>
+    <td>tracks</td>
+    <td>MP3 audio source to play</td>
+    <td>file0=<em>&lt;filename&gt;</em></td>
+  </tr>
+</table>
+
+<h2>Element Tree View</h2>
+
+<p>Use the following as a guide when setting up player elements.</p>
+
+<pre>
+                                           [DIV.#player]
+                                                 |
+          ______________________________________________________________________________
+         |                   |                   |                   |                  |
+[DIV.progress_bar] [BUTTON.sound_pause] [BUTTON.sound_play] [BUTTON.sound_stop] [DIV.volume_bar]</pre>
+
+<h2>Releases</h2>
+
+<p>I have included with this package a <a href="http://dean.edwards.name/packer">packed</a> version (3.2 kB) and developers version (unpacked 7 kB)</p>
+
+<p>You can always find the latest updates within this projects repository.</p>
+
+<h2>Code Repository</h2>
+
+<p>This projects repository is currently hosted on <a href="https://github.com">Github</a></p>
+
+<pre>https://github.com/nuxy/MP3-Flashback</pre>
+
+<h2>Maintainer</h2>
+
+<p>For feedback, bug reports, or other comments, feel free to contact me at: <strong>devel</strong> <em>at</em> <strong>mbrooks</strong> <em>dot</em> <strong>info</strong></p>
+
+<h2>License and Warranty</h2>
+
+<p>This package is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose.</p>
+
+<p>MP3 Flashback is provided under the terms of the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+
+<p>MP3 Flashback &#169;2012-2015 <a href="https://mbrooks.info">Marc S. Brooks</a></p>
+
+</body>
+</html>
