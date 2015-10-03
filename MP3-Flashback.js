@@ -1,6 +1,6 @@
 /**
  *  MP3 Flashback
- *  An elegant MP3 Flash fallback when HTML5 audio is not supported
+ *  An elegant MP3 Flash fallback when HTML5 audio is not supported.
  *
  *  Copyright 2012-2015, Marc S. Brooks (https://mbrooks.info)
  *  Licensed under the MIT license:
