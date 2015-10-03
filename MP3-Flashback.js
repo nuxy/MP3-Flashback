@@ -31,21 +31,21 @@ if (!window.jQuery || (window.jQuery && parseInt(window.jQuery.fn.jquery.replace
      * @method init
      *
      * @example
-     * $('#container').MP3Flashback(options);
+     * $('#container').MP3Flashback(settings);
      *
-     * @param {Object} options
+     * @param {Object} settings
      *
      * @returns {Object} jQuery object
      */
-    "init": function(options) {
+    "init": function(settings) {
       var $this = $(this),
           data  = $this.data();
 
-      // Default options
-      var settings = $.extend({
+      // Default settings
+      var defaults = $.extend({
         volumeStart: 70,
         tracks:      null
-      }, options);
+      }, settings);
 
       if ( $.isEmptyObject(data) ) {
         soundPlayer = $this;
@@ -56,7 +56,7 @@ if (!window.jQuery || (window.jQuery && parseInt(window.jQuery.fn.jquery.replace
         duraTimer   = $this.children('.duration');
         volumeBar   = $this.children('.volume_bar');
 
-        var soundFile = settings.tracks.file0,
+        var soundFile = defaults.tracks.file0,
             audioObj  = null;
 
         try {
@@ -72,7 +72,7 @@ if (!window.jQuery || (window.jQuery && parseInt(window.jQuery.fn.jquery.replace
 
           $this.data({
             soundObj: audioObj,
-            options:  settings
+            options:  defaults 
           });
 
           $this.MP3Flashback('_createPlayer');
@@ -90,7 +90,7 @@ if (!window.jQuery || (window.jQuery && parseInt(window.jQuery.fn.jquery.replace
               $this.data({
                 soundObj: window.document[objectId],
                 useFlash: true,
-                options:  settings
+                options:  defaults
               });
 
               $this.MP3Flashback('_createPlayer');
